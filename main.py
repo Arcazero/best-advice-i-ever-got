@@ -20,6 +20,11 @@ def main() -> None:
     path = os.path.join(out_dir, "entry.txt")
     with open(path, "w", encoding="utf-8") as f:
         f.write(SENTENCE)
+    # Read it back and verify the file holds exactly the sentence.
+    with open(path, "r", encoding="utf-8") as f:
+        written = f.read()
+    assert written == SENTENCE, "entry.txt does not match SENTENCE"
+    print(f"Wrote {len(written)} characters to {path}")
 
 
 if __name__ == "__main__":
